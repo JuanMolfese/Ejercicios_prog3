@@ -26,6 +26,7 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
         }
         return null;
     }
+    public Node<T> getFirst(){return first;};
 
     public boolean isEmpty() {
         return (this.size == 0);
@@ -48,6 +49,20 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
         return this.size;
     }
 
+    public int index_Of (T e){
+
+        Node<T> cur = first;
+
+        if(cur != null){
+            int indice = 0;
+            while (cur.getNext() != null && cur.getInfo() == e){
+                cur = cur.getNext();
+                indice ++;
+            }
+            if(cur.getInfo()==e) return indice;
+        }
+        return -1;
+    }
 
 
     @Override
