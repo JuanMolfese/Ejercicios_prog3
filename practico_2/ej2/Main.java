@@ -29,10 +29,10 @@ public class Main {
         //Parte 2
         int[] array;
         array = new int[10];
-        Integer e2=12;
+        Integer e2=13;
 
         for (int i =0; i < array.length; i++){
-            array[i]= i+3;
+            array[i]= i*3;
         }
         System.out.println("El elemento " + e2 + " esta en la posicion : " + buscar_elem_array(array, e2, 0));
 
@@ -44,7 +44,7 @@ public class Main {
     }
 
     private static int buscar_elem_array(int[] a, Integer e, Integer indice){
-        if (indice == a.length) return -1;
+        if (indice == a.length || a[indice]>e) return -1;
         if (a[indice]==e) return indice;
         else return buscar_elem_array(a, e, indice+1);
     }
