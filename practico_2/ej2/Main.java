@@ -14,7 +14,7 @@ ascendentemente [1 2 3 …].
 public class Main {
 
     public static void main(String[] args) {
-
+        //Parte 1
         MySimpleLinkedList<Integer> list = new MySimpleLinkedList<>();
         Integer e = 4;
 
@@ -25,10 +25,28 @@ public class Main {
         list.insertFront(1);
 
         System.out.println("El elemento " + e + " esta en la posicion : " + buscar_elem(list.getFirst(), e, 0));
+
+        //Parte 2
+        int[] array;
+        array = new int[10];
+        Integer e2=12;
+
+        for (int i =0; i < array.length; i++){
+            array[i]= i+3;
+        }
+        System.out.println("El elemento " + e2 + " esta en la posicion : " + buscar_elem_array(array, e2, 0));
+
     }
     private static int buscar_elem(Node n, Integer e, Integer indice) {
         if (n == null) return -1;
         if (n.getInfo() == e) return indice;
         else return buscar_elem(n.getNext(), e, indice + 1);
     }
+
+    private static int buscar_elem_array(int[] a, Integer e, Integer indice){
+        if (indice == a.length) return -1;
+        if (a[indice]==e) return indice;
+        else return buscar_elem_array(a, e, indice+1);
+    }
+
 }
