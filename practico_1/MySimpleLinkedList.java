@@ -55,7 +55,7 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
 
         if(cur != null){
             int indice = 0;
-            while (cur.getNext() != null && cur.getInfo() == e){
+            while (cur.getNext() != null && cur.getInfo() != e){
                 cur = cur.getNext();
                 indice ++;
             }
