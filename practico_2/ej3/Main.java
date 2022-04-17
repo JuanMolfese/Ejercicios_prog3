@@ -5,7 +5,7 @@ package practico_2.ej3;
 public class Main {
     public static void main(String[] args) {
 
-        int num_ingresado = 4;
+        int num_ingresado = 8;
         String bin = "";
         System.out.println("El valor "+num_ingresado+" en notacion binaria es equivalente a "+ pasarBinario(num_ingresado,bin));
     }
