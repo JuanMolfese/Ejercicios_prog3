@@ -18,7 +18,7 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
     }
 
     public void insertBack(T info) {
-        Node<T> tmp = new Node<T>(info);
+        Node<T> tmp = new Node<T>(info,null);
         Node<T> last = this.first;
         boolean insert = false;
 

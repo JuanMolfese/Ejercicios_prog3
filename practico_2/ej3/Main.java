@@ -5,12 +5,12 @@ package practico_2.ej3;
 public class Main {
     public static void main(String[] args) {
 
-        int num_ingresado = 8;
+        int num_ingresado = 30;
         System.out.println("El valor "+num_ingresado+" en notacion binaria es equivalente a "+ pasarBinario(num_ingresado));
     }
 
-    private static String pasarBinario(int num){
-        if (num<2)return num;
-        else return num%2+pasarBinario(num/2)*10;
+    private static int pasarBinario(int num){
+        if (num<2) return num;
+        else return (num%2 + pasarBinario((num/2))*10);
     }
 }
