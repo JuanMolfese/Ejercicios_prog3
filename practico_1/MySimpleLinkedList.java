@@ -17,6 +17,24 @@ public class MySimpleLinkedList<T> implements Iterable<T> {
         this.size++;
     }
 
+    public void insertBack(T info) {
+        Node<T> tmp = new Node<T>(info);
+        Node<T> last = this.first;
+        boolean insert = false;
+
+        if (last == null) this.first = tmp;
+        else{
+                while (!insert && last != null) {
+                    if(last.getNext() == null) {
+                        last.setNext(tmp);
+                        insert = true;
+                    }
+                last = last.getNext();
+                }
+            }
+    }
+
+
     public T extractFront() {
         if(this.first != null){
             Node<T> tmp = this.first;
