@@ -23,7 +23,7 @@ public class Burbujeo {
             }
         }
         for (int r = 0; r < arreglo.length; r++) {
-            System.out.print(arreglo[r] + "    ");
+            System.out.print(arreglo[r] + "  ");
         }
         System.out.println("");
     }
