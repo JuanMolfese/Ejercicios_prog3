@@ -1,10 +1,7 @@
 package practico_2.ej4;
 
 public class Seleccion {
-
-    public Seleccion(int[]arreglo){
-
-    }
+    // El tiempo de ejecución del algoritmo de ordenación por selección es del orden O(n2)
 
     public void ordenar(int arreglo[]) {
         int i, j, menor, pos, tmp;
@@ -23,10 +20,33 @@ public class Seleccion {
                 arreglo[pos] = tmp;
             }
         }
-        for (int r = 0; r < arreglo.length; r++) {
-            System.out.print(arreglo[r] + "  ");
+
+    /*
+        FORMA RECURSIVA NO FUNCIONA BIEN PARA ESTE CASO:new int[]{35,10,3,8,4,6,7,5,9,1,20,29}   ANALIZAR
+        public void ordenar(int[] arreglo, int pos) {
+        if (pos < arreglo.length) {
+            int posMin = buscarPosMinima(arreglo, pos);
+            int aux = arreglo[pos];
+            arreglo[pos] = arreglo[posMin];
+            arreglo[posMin] = aux;
+            ordenar(arreglo, pos + 1);
         }
-        System.out.println("");
     }
-    // El tiempo de ejecución del algoritmo de ordenación por selección es del orden O(n2)
-}
+
+    private int buscarPosMinima(int arr[], int posI){
+        int posMin=posI;
+        int min = arr[posI];
+
+        for (int i=posI++;i<arr.length;i++){
+            if(arr[i] < min){
+                posMin=i;
+            }
+        }
+        return posMin;
+
+    }
+     */
+
+
+}}
+

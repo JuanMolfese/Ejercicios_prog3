@@ -2,10 +2,6 @@ package practico_2.ej4;
 //metodo burbujeo adaptativo. controla que en la primer pasada ya este ordenado.
 
 public class Burbujeo {
-    public Burbujeo(int[] arreglo) {
-
-    }
-
     public void ordenar(int[] arreglo) {
         boolean intercambiado = true;
         int j = 0;
@@ -22,9 +18,5 @@ public class Burbujeo {
                 }
             }
         }
-        for (int r = 0; r < arreglo.length; r++) {
-            System.out.print(arreglo[r] + "  ");
-        }
-        System.out.println("");
     }
 }
