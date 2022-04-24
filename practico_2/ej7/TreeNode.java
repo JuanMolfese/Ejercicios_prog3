@@ -32,4 +32,8 @@ public class TreeNode {
         return value;
     }
 
+    public boolean esHoja(){
+        return this.left == null && this.right==null;
+    }
+
 }
