@@ -31,9 +31,11 @@ public class TreeNode {
     public Integer getValue() {
         return value;
     }
-
     public boolean esHoja(){
         return this.left == null && this.right==null;
     }
 
+    public void setValue(Integer value) {
+        this.value = value;
+    }
 }

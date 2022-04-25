@@ -19,14 +19,14 @@ public class Main {
         //valor a buscar en el arbol:
         int valor=1;
         //Nivel que quiero mostrar del arbol:
-        int nivel=1;
+        int nivel=2;
 
         System.out.println("La altura del arbol es de "+MiArbol.getHeight());
         System.out.println("El valor "+valor+" esta en el arbol ?? :  "+MiArbol.hasElement(valor));
         System.out.println("El valor maximo contenido en el arbol es "+MiArbol.valorMaximo());
         System.out.println("La rama mas larga es "+MiArbol.getLongBranch());  //NO FUNCIONA
-        System.out.println("La lista de hojas del arbol es: "+MiArbol.frontierList()); //NO FUNCIONA
+        System.out.println("La lista de hojas del arbol es: "+MiArbol.frontierList());
         System.out.println("El valor de la raiz del arbol es "+MiArbol.getRootInfo());
-        System.out.println("Los elementos del nivel "+nivel+" es "+MiArbol.getElementByLevel(nivel));//NO FUNCIONA
+        System.out.println("Los elementos del nivel "+nivel+" es "+MiArbol.getElementByLevel(nivel));
     }
 }

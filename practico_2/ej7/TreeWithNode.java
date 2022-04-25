@@ -61,14 +61,24 @@ public class TreeWithNode {
     }
 
     private ArrayList<Integer> getLongBranch(TreeNode actual) {
-        //No me cierra como agregar bien el elemento a la lista
-        if (actual.getLeft() == null && actual.getRight() == null) return new ArrayList<>(actual.getValue());
-        // if(actual.esHoja())return new ArrayList<>(actual.getValue());
 
+        if(actual.esHoja()){
+             ArrayList<Integer> meAgrego = new ArrayList<>();
+             meAgrego.add(actual.getValue());
+             return meAgrego;
+        }
         ArrayList<Integer> izq = new ArrayList<>();
         ArrayList<Integer> der = new ArrayList<>();
-        if (actual.getLeft() != null) izq.addAll(getLongBranch(actual.getLeft()));
-        if (actual.getRight() != null) der.addAll(getLongBranch(actual.getRight()));
+
+        if (actual.getLeft() != null) {
+            izq.add(actual.getValue());
+            izq.addAll(getLongBranch(actual.getLeft()));
+        }
+        if (actual.getRight() != null) {
+            der.add(actual.getValue());
+            der.addAll(getLongBranch(actual.getRight()));
+        }
+
         if (izq.size() >= der.size()) return izq;
         else return der;
     }
@@ -87,9 +97,9 @@ public class TreeWithNode {
         return false;
     }
 
-    public int valorMaximo() {
+    public Integer valorMaximo() {
         if (this.root == null)
-            return -1;
+            return null;
         else
             return this.valorMaximo(this.root);
     }
@@ -107,22 +117,21 @@ public class TreeWithNode {
     }
 
     private ArrayList<Integer> frontierList(TreeNode n) {
-        if (n.esHoja()) new ArrayList<Integer>(n.getValue());
         ArrayList<Integer> hojas = new ArrayList<>();
-        if (n.getLeft() != null) hojas.addAll(frontierList(n.getLeft()));
-        if (n.getRight() != null) hojas.addAll(frontierList(n.getRight()));
+        if (n.esHoja()){
+            hojas.add(n.getValue());
+        }else {
+            if (n.getLeft() != null) hojas.addAll(frontierList(n.getLeft()));
+            if (n.getRight() != null) hojas.addAll(frontierList(n.getRight()));
+        }
         return hojas;
     }
 
-    public int getRootInfo() {
+    public Integer getRootInfo() {
         if (this.root == null)
-            return -1;
+            return null;
         else
-            return this.getRootInfo(this.root);
-    }
-
-    private int getRootInfo(TreeNode n) {
-        return root.getValue();
+            return this.root.getValue();
     }
 
     public ArrayList<Integer> getElementByLevel(int level) {
@@ -133,11 +142,36 @@ public class TreeWithNode {
     }
 
     private ArrayList<Integer> getElementByLevel(TreeNode n, int level, int levelActual) {
-        if(level == levelActual) return new ArrayList<>(n.getValue());
-        levelActual++;
+
         ArrayList<Integer>resultado = new ArrayList<>();
+
+        if(level == levelActual)
+            resultado.add(n.getValue());
+        levelActual++;
         if(n.getLeft()!=null) resultado.addAll(getElementByLevel(n.getLeft(), level,levelActual));
         if(n.getRight()!=null) resultado.addAll(getElementByLevel(n.getRight(), level, levelActual));
         return resultado;
     }
+
+    public boolean delete(Integer valor){
+        if (this.root.getValue().equals(valor)){
+            this.root.setValue(null);
+            return true;
+        }else{
+            return delete(this.root, valor);
+        }
+    }
+    private boolean delete(TreeNode n, Integer valor){
+        if(n.getValue()>valor){
+            if(n.getLeft()!=null){
+                if(n.getLeft().getValue().equals(valor)){
+
+                }else{
+                    return delete(n.getLeft(),valor);
+                }
+            }
+        }
+
+    }
+
 }
