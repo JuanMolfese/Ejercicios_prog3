@@ -164,14 +164,46 @@ public class TreeWithNode {
     private boolean delete(TreeNode n, Integer valor){
         if(n.getValue()>valor){
             if(n.getLeft()!=null){
-                if(n.getLeft().getValue().equals(valor)){
-
-                }else{
-                    return delete(n.getLeft(),valor);
-                }
+                if(n.getLeft().getValue().equals(valor)){  //Caso donde el hijo de la izq es el nodo a borrar.
+                    if(n.getLeft().esHoja()) {  //Si el nodo a borrar es una hoja
+                        n.setLeft(null);
+                        return true;
+                    } else if(n.getLeft().haveOneChild()){ //Si el nodo a borrar tiene un solo hijo
+                            if(n.getLeft().getLeft() != null)
+                                n.setLeft(n.getLeft().getLeft());
+                            else n.setLeft(n.getLeft().getRight());
+                            return true;
+                    } else {
+                        n.setValue(buscarNMI(n.getRight()));
+                        return delete(n.getRight(),valor);
+                    }
+                } else { return delete(n.getLeft(),valor);}
             }
-        }
+        }else if(n.getValue()<valor){
+            if(n.getRight()!=null){
+                if(n.getRight().getValue().equals(valor)){  //Caso donde el hijo de la der es el nodo a borrar.
+                    if(n.getRight().esHoja()) {  //Si el nodo a borrar es una hoja
+                        n.setRight(null);
+                        return true;
+                    } else if(n.getRight().haveOneChild()){ //Si el nodo a borrar tiene un solo hijo
+                        if(n.getRight().getRight() != null)
+                            n.setRight(n.getRight().getRight());
+                        else n.setRight(n.getRight().getLeft());
+                        return true;
+                    } else {
+                        n.setValue(buscarNMI(n.getRight()));
+                        return delete(n.getRight(),valor);
+                    }
+                } else { return delete(n.getRight(),valor);}
+            }
 
+    }
+    return false;
+}
+    private Integer buscarNMI(TreeNode n){
+        if (n.getLeft()==null)
+            return n.getValue();
+        else return buscarNMI(n.getLeft());
     }
 
 }

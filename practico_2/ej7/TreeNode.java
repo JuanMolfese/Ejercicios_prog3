@@ -35,6 +35,9 @@ public class TreeNode {
         return this.left == null && this.right==null;
     }
 
+    public boolean haveOneChild(){ return (this.left == null && this.right !=null)
+            || (this.left != null && this.right ==null);
+    }
     public void setValue(Integer value) {
         this.value = value;
     }
