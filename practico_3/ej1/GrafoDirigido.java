@@ -6,11 +6,7 @@ import java.util.Iterator;
 
 public class GrafoDirigido<T> implements Grafo<T> {
 
-    private HashMap<Integer, ArrayList<Arco>> grafo;
-
-    public GrafoDirigido(){
-         grafo = new HashMap<>();
-    }
+    private HashMap<Integer, ArrayList<Arco>> grafo = new HashMap<>();
 
     @Override
     public void agregarVertice(int verticeId) {
@@ -44,7 +40,6 @@ public class GrafoDirigido<T> implements Grafo<T> {
                     grafo.get(verticeId1).remove(i);
             }
         }
-        else System.out.println("El vertice origen no se encuentra presente en el grafo");
     }
 
     @Override
@@ -87,14 +82,19 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
     @Override
     public Iterator<Integer> obtenerVertices() {
-
-        return null;
+        Iterator<Integer> it = grafo.keySet().iterator();
+        return it;
     }
 
     @Override
     public Iterator<Integer> obtenerAdyacentes(int verticeId) {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<Integer>lista_ady = new ArrayList<>();
+        for (int i = 0; i < grafo.get(verticeId).size(); i++) {
+            lista_ady.add(grafo.get(verticeId).get(i).getVerticeDestino());
+        }
+        Iterator<Integer> it = lista_ady.iterator();
+        return it;
+
     }
 
     @Override
