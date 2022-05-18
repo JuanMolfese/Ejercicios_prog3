@@ -75,7 +75,7 @@ public class GrafoDirigido<T> implements Grafo<T> {
     public int cantidadArcos() {
         int contador = 0;
         for (int i : grafo.keySet()) {
-            contador = grafo.get(i).size();
+            contador += grafo.get(i).size();
             }
         return contador;
     }
@@ -99,14 +99,22 @@ public class GrafoDirigido<T> implements Grafo<T> {
 
     @Override
     public Iterator<Arco<T>> obtenerArcos() {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<Arco<T>> lista_arcos = new ArrayList<>();
+        for (int i : grafo.keySet()) {
+            for(int j=0; j < grafo.get(i).size(); j++)
+                lista_arcos.add(grafo.get(i).get(j));
+        }
+        Iterator<Arco<T>> it = lista_arcos.iterator();
+        return it;
     }
 
     @Override
     public Iterator<Arco<T>> obtenerArcos(int verticeId) {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<Arco<T>> lista_arcos = new ArrayList<>();
+        for(int j=0; j < grafo.get(verticeId).size(); j++)
+          lista_arcos.add(grafo.get(verticeId).get(j));
+        Iterator<Arco<T>> it = lista_arcos.iterator();
+        return it;
     }
 
 }
